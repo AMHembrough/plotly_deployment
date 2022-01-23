@@ -85,12 +85,14 @@ function buildCharts(sample) {
       type: "bar"
       }
     ];
+
     // 9. Create the layout for the bar chart. 
     var barLayout = {
       title: "Most Frequent Bacteria Species",
       xaxis: {title: "Bacterium"},
       yaxis: {title: "Frequency"}
     };
+
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
 
@@ -99,6 +101,7 @@ function buildCharts(sample) {
 
     // 1. Create the trace for the bubble chart.
     var bubbleData = [
+      {
       x: otu_ids,
       y: sample_values,
       text: otu_labels,
@@ -107,7 +110,9 @@ function buildCharts(sample) {
          size: sample_values,
          color: sample_values,
          colorscale: "Picnic" 
-    ];
+       }
+      }
+    ]
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
