@@ -59,7 +59,7 @@ function buildCharts(sample) {
   d3.json("samples.json").then((data) => {
 
     // 3. Create a variable that holds the samples array. 
-    var metadata = data.metadata;
+    var metadata = data.samples;
 
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
@@ -79,9 +79,11 @@ function buildCharts(sample) {
 
     // 8. Create the trace for the bar chart. 
     var barData = [
+      {      
       x: sample_values,
       y: yticks,
       type: "bar"
+      }
     ];
     // 9. Create the layout for the bar chart. 
     var barLayout = {
@@ -92,5 +94,30 @@ function buildCharts(sample) {
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
 
+
+
+
+    // 1. Create the trace for the bubble chart.
+    var bubbleData = [
+      x: otu_ids,
+      y: sample_values,
+      text: otu_labels,
+      mode: "markers",
+       marker: {
+         size: sample_values,
+         color: sample_values,
+         colorscale: "Picnic" 
+    ];
+
+    // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+      title: "Bacteria Cultures Per Sample",
+      xaxis: {title: "OTU ID"},
+      automargin: true,
+      hovermode: "closest"
+    };
+
+    // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot(); 
   });
 }
