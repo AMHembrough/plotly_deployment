@@ -125,17 +125,7 @@ function buildCharts(sample) {
     // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);; 
   });
-}
 
-
-
-
-
-
-
-
-// 1. Create the buildCharts function.
-function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
     // 1. Create a variable that filters the metadata array for the object with the desired sample number.
@@ -154,23 +144,24 @@ var gaugeData = [
   {
     domain: { x: [0, 1], y: [0, 1] },
     value: wfreq,
-    title: { text: "<b>Belly Button Washing Frequency</b> <br>Scrub Per Week" },
+    title: "Belly Button Washing Frequency <br>Scrubs Per Week",
     type: "indicator",
-    mode: "gauge+number",
+    mode: "gauge",
     gauge: {
         axis: { range: [0, 10], tickwidth: 1, tickcolor: "black"},
         bar: { color: "black" },
+
+
+        
         steps: [
-            { range: [0, 2], color: "red" },
-            { range: [2, 4], color: "orange" },
-            { range: [4, 6], color: "yellow" },
-            { range: [6, 8], color: "lightgreen" },
-            { range: [8, 10], color: "darkgreen" }
+            { range: [0, 3], color: "aliceblue" },
+            { range: [3, 7], color: "lightskyblue" },
+            { range: [7, 10], color: "steelblue" },
               ]
   }
   }
 ];
 // 5. Create the layout for the gauge chart.
 var gaugeLayout = { width: 470, height: 350, margin: { t: 0, b: 0 }};
-// 6. Use Plotly to plot the gauge data and layout.
 Plotly.newPlot('gauge', gaugeData, gaugeLayout);
+});}
