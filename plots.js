@@ -146,7 +146,7 @@ var gaugeData = [
     value: wfreq,
     title: "Belly Button Washing Frequency <br>Scrubs Per Week",
     type: "indicator",
-    mode: "gauge",
+    mode: "gauge+number",
     gauge: {
         axis: { range: [0, 10], tickwidth: 1, tickcolor: "black"},
         bar: { color: "black" },
