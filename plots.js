@@ -71,7 +71,7 @@ function buildCharts(sample) {
     var otu_ids = result.otu_ids;
     var otu_labels = result.otu_labels;
     var sample_values = result.sample_values;
-    var wfreq = result.wfreq;
+   
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -130,6 +130,24 @@ function buildCharts(sample) {
 
 
 
+
+
+
+
+// 1. Create the buildCharts function.
+function buildCharts(sample) {
+  // 2. Use d3.json to load and retrieve the samples.json file 
+  d3.json("samples.json").then((data) => {
+    // 1. Create a variable that filters the metadata array for the object with the desired sample number.
+    var metadata = data.metadata;
+    var gaugeArray = metadata.filter(metaObj => metaObj.id == sample);  
+
+    // 2. Create a variable that holds the first sample in the metadata array.
+        var gaugeResult = gaugeArray[0];
+
+    // 3. Create a variable that holds the washing frequency.  
+    var wfreq = gaugeResult.wfreq;
+    console.log(wfreq)
 
 
 var gaugeData = [

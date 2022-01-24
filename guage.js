@@ -5,24 +5,30 @@ function buildCharts(sample) {
     console.log(data);
 
     // Create a variable that holds the samples array. 
-
+    var metadata = data.samples;
     // Create a variable that filters the samples for the object with the desired sample number.
-
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    
     // 1. Create a variable that filters the metadata array for the object with the desired sample number.
 
     // Create a variable that holds the first sample in the array.
-  
+    var result = resultArray[0];
 
     // 2. Create a variable that holds the first sample in the metadata array.
-    
+
 
     // Create variables that hold the otu_ids, otu_labels, and sample_values.
-
+    var otu_ids = result.otu_ids;
+    var otu_labels = result.otu_labels;
+    var sample_values = result.sample_values;
 
     // 3. Create a variable that holds the washing frequency.
-   
-    // Create the yticks for the bar chart.
+    var wfreq = result.wfreq;
 
+    // Create the yticks for the bar chart.
+    var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID} `).reverse();
+
+    
     // Use Plotly to plot the bar data and layout.
     Plotly.newPlot();
     
